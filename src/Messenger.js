@@ -98,12 +98,14 @@ class Messenger extends Component {
         <Messages list={this.state.messages} between={this.props.between} login={this.props.login} />
         <div className="type bg-light">
           <div className="container">
-            <div className="input-group my-3">
-              <input type="text" value={this.state.text} onChange={this.handleChange} className="form-control" placeholder="Message" />
-              <div className="input-group-append">
-                <button className="btn current" type="button" onClick={this.newMessageSent} >Send</button>
+            <form onSubmit={this.newMessageSent}>
+              <div className="input-group my-3">
+                <input type="text" value={this.state.text} onChange={this.handleChange} className="form-control" placeholder="Message" />
+                <div className="input-group-append">
+                  <button className="btn current" type="submit" >Send</button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
