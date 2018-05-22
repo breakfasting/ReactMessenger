@@ -7,13 +7,14 @@ import User from './User';
 class Side extends Component {
   render() {
     const list = [];
+    const noteList = this.props.users[this.props.login].notification;
 
     this.props.users.forEach((element) => {
       if (element.uid !== this.props.login) {
         if (element.uid === this.props.between) {
-          list.push(<User key={element.uid} navigateUsers={this.props.navigateUsers} uid={element.uid} avatar={element.avatar} notification={element.notification} name={element.name} status={element.status} current />);
+          list.push(<User key={element.uid} navigateUsers={this.props.navigateUsers} uid={element.uid} avatar={element.avatar} notification={noteList[element.uid]} name={element.name} status={element.status} current />);
         } else {
-          list.push(<User key={element.uid} navigateUsers={this.props.navigateUsers} uid={element.uid} avatar={element.avatar} notification={element.notification} name={element.name} status={element.status} />);
+          list.push(<User key={element.uid} navigateUsers={this.props.navigateUsers} uid={element.uid} avatar={element.avatar} notification={noteList[element.uid]} name={element.name} status={element.status} />);
         }
       }
     });
