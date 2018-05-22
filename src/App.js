@@ -8,23 +8,30 @@ import './App.css';
 // Other users to chat with after logging in
 const USERS = [
   {
+    uid: 0,
+    name: 'Wayne Su',
+    avatar: 'http://via.placeholder.com/40x40',
+    notification: 0,
+    status: 'Last Online 17:39 PM',
+  },
+  {
     uid: 1,
     name: 'Bruce Banner',
-    avatar: 'http://via.placeholder.com/40x40',
+    avatar: 'https://i.imgur.com/oIhNwck.jpg',
     notification: 1,
     status: 'Last Online 21:39 PM',
   },
   {
     uid: 2,
     name: 'Tony Stark',
-    avatar: 'http://via.placeholder.com/40x40',
+    avatar: 'https://i.imgur.com/piHJuIL.jpg',
     notification: 0,
     status: 'Last Online 2 Days Ago',
   },
   {
     uid: 3,
     name: 'Steve Rogers',
-    avatar: 'http://via.placeholder.com/40x40',
+    avatar: 'https://i.imgur.com/YyclIYy.jpg',
     notification: 0,
     status: 'Last Online 08:30 AM',
   },
@@ -96,11 +103,15 @@ const MESSAGES3 = [
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], messages: [], chatWith: 1 };
+    this.state = {
+      users: [],
+      messages: [],
+      chatWith: 1,
+    };
     this.getUsers = this.getUsers.bind(this);
     this.getMessages = this.getMessages.bind(this);
   }
-  componentDidMount() {
+  componentWillMount() {
     this.getUsers();
     this.getMessages(3);
   }
@@ -127,8 +138,8 @@ class App extends Component {
   render() {
     return (
       <div className="app h-100 d-flex">
-        <Side navigateUsers={this.getMessages} users={this.state.users} />
-        <Messenger messages={this.state.messages} between={this.state.chatWith} />
+        <Side navigateUsers={this.getMessages} users={this.state.users} login={0} between={this.state.chatWith} />
+        <Messenger messages={this.state.messages} login={0} between={this.state.chatWith} info={this.state.users[this.state.chatWith]} />
       </div>
     );
   }

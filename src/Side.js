@@ -9,14 +9,20 @@ class Side extends Component {
     const list = [];
 
     this.props.users.forEach((element) => {
-      list.push(<User navigateUsers={this.props.navigateUsers} uid={element.uid} avatar={element.avatar} notification={element.notification} name={element.name} status={element.status} />);
+      if (element.uid !== this.props.login) {
+        if (element.uid === this.props.between) {
+          list.push(<User key={element.uid} navigateUsers={this.props.navigateUsers} uid={element.uid} avatar={element.avatar} notification={element.notification} name={element.name} status={element.status} current />);
+        } else {
+          list.push(<User key={element.uid} navigateUsers={this.props.navigateUsers} uid={element.uid} avatar={element.avatar} notification={element.notification} name={element.name} status={element.status} />);
+        }
+      }
     });
     return (
       <div className="side d-flex flex-column justify-content-between">
         <ul className="list list-unstyled mt-5 text-light">
           {list}
         </ul>
-        <div className="hide status text-center my-4">Logged in as Wayne Su</div>
+        <div className="hide status text-center my-4">Logged in as {this.props.users[this.props.login].name}</div>
       </div>
     );
   }

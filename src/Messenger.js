@@ -13,7 +13,7 @@ function Received(props) {
 function Header(props) {
   return (
     <div className="bg-light media">
-      <img className="m-3 rounded" src={props.avatar} alt="" />
+      <img className="m-3 rounded border shadow-sm" src={props.avatar} width="100px" height="100px" alt="" />
       <div className="media-body align-self-center">
         <h4 className="my-0">{props.name}</h4>
         <span className="status">{props.status}</span>
@@ -41,17 +41,49 @@ function Messages(props) {
 }
 
 class Messenger extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      messages: [],
+      text: '',
+    };
+    this.handleChange = this.handleChange.bind(this);
+    this.newMessageSent = this.newMessageSent.bind(this);
+  }
+  componentWillMount() {
+    this.setState({ messages: this.props.messages });
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({ messages: newProps.messages });
+  }
+
+  newMessageSent(event) {
+    const messagelist = this.state.messages;
+    messagelist.push({
+      fromUID: this.props.login,
+      toUID: this.props.between,
+      text: this.state.text,
+    });
+    this.setState({ text: '' });
+    event.preventDefault();
+  }
+
+  handleChange(event) {
+    this.setState({ text: event.target.value });
+  }
+
   render() {
     return (
       <div className="main d-flex flex-column justify-content-between">
-        <Header avatar="http://via.placeholder.com/100x100" name="Tony Stark" status="Last Online 2 Days Ago" />
-        <Messages list={this.props.messages} between={this.props.between} />
+        <Header avatar={this.props.info.avatar} name={this.props.info.name} status={this.props.info.status} />
+        <Messages list={this.state.messages} between={this.props.between} />
         <div className="type bg-light">
           <div className="container">
             <div className="input-group my-3">
-              <input type="text" className="form-control" placeholder="Message" />
+              <input type="text" value={this.state.text} onChange={this.handleChange} className="form-control" placeholder="Message" />
               <div className="input-group-append">
-                <button className="btn current" type="button">Send</button>
+                <button className="btn current" type="button" onClick={this.newMessageSent} >Send</button>
               </div>
             </div>
           </div>
