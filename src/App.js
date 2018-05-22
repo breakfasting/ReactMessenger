@@ -65,7 +65,7 @@ class App extends Component {
     this.setState({ users: USERS });
 
     this.socket.emit('GETMESSAGES');
-    this.switchPage((this.props.login === 0) ? 1 : 0);
+    this.setState({ chatWith: ((this.props.login === 0) ? 1 : 0) });
   }
   componentDidMount() {
     document.title = USERS[this.props.login].name;
