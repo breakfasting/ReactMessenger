@@ -13,7 +13,7 @@ class User extends Component {
   render() {
     return (
       <li className={this.props.current ? 'current' : null}>
-        <div className="pl-5 py-3 media">
+        <button onClick={() => this.props.navigateUsers(this.props.uid)} className="listbtn pl-5 py-3 media">
           <div className="image">
             <img className="mr-3" src={this.props.avatar} alt="" />
             <ShowNotification count={this.props.notification} />
@@ -22,7 +22,7 @@ class User extends Component {
             <h6 className="my-0">{this.props.name}</h6>
             <span className="status">{this.props.status}</span>
           </div>
-        </div>
+        </button>
       </li>
     );
   }

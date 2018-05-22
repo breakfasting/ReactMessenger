@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react';
 import Side from './Side';
-import User from './User';
 import Messenger from './Messenger';
 import './App.css';
 
@@ -84,45 +83,56 @@ const MESSAGES3 = [
     mid: 7,
     fromUID: 3,
     toUID: 0,
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error soluta, vero ducimus magni corporis voluptate commodi iure et eum quae amet beatae porro minima reprehenderit tempore delectus ut? Voluptates est cumque et dolorem deleniti sequi blanditiis officia praesentium necessitatibus fugit velit saepe eius, rem vitae tempore molestias minima repudiandae tenetur.',
+    text: 'Steve Rogers Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error soluta, vero ducimus magni corporis voluptate commodi iure et eum quae amet beatae porro minima reprehenderit tempore delectus ut? Voluptates est cumque et dolorem deleniti sequi blanditiis officia praesentium necessitatibus fugit velit saepe eius, rem vitae tempore molestias minima repudiandae tenetur.',
+  },
+  {
+    mid: 8,
+    fromUID: 0,
+    toUID: 3,
+    text: 'Steve Rogers Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error soluta, vero ducimus magni corporis voluptate commodi iure et eum quae amet beatae porro minima reprehenderit tempore delectus ut? Voluptates est cumque et dolorem deleniti sequi blanditiis officia praesentium necessitatibus fugit velit saepe eius, rem vitae tempore molestias minima repudiandae tenetur.',
   },
 ];
-
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { rows: [], messages: [] };
+    this.state = { users: [], messages: [], chatWith: 1 };
     this.getUsers = this.getUsers.bind(this);
     this.getMessages = this.getMessages.bind(this);
   }
   componentDidMount() {
     this.getUsers();
-    this.getMessages();
+    this.getMessages(3);
   }
 
-  getMessages() {
-    this.setState({ messages: MESSAGES1 });
-    console.log('click');
+  getMessages(user) {
+    switch (user) {
+      case 1:
+        this.setState({ messages: MESSAGES1, chatWith: 1 });
+        break;
+      case 2:
+        this.setState({ messages: MESSAGES2, chatWith: 2 });
+        break;
+      case 3:
+        this.setState({ messages: MESSAGES3, chatWith: 3 });
+        break;
+      default:
+        break;
+    }
   }
 
   getUsers() {
-    const list = [];
-
-    USERS.forEach((element) => {
-      list.push(<User onClick={this.getMessages} avatar={element.avatar} notification={element.notification} name={element.name} status={element.status} />);
-    });
-    this.setState({ rows: list });
+    this.setState({ users: USERS });
   }
   render() {
     return (
       <div className="app h-100 d-flex">
-        <button onClick={this.getMessages}>123</button>
-        <Side users={this.state.rows} />
-        <Messenger messages={this.state.messages} between={1} />
+        <Side navigateUsers={this.getMessages} users={this.state.users} />
+        <Messenger messages={this.state.messages} between={this.state.chatWith} />
       </div>
     );
   }
 }
+
 
 export default App;

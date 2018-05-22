@@ -3,6 +3,18 @@ html, body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.listbtn {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    text-align: inherit;
+    width: 100%;
+}
+
 a {
     text-decoration: none;
     color: white;
@@ -90,7 +102,7 @@ h6 {
         width: 70px;
     }
 
-    .list li > a {
+    .list li > button {
         padding-left: 1rem!important;
     }
 }
