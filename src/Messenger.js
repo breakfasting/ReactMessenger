@@ -33,9 +33,10 @@ function Messages(props) {
     }
   });
   return (
-    <div className="messenges">
+    <div className="messenges d-flex">
       <div className="container d-flex flex-column pb-2">
         {list}
+        <div id="here" className="mt-auto">&nbsp;</div>
       </div>
     </div>
   );
@@ -59,6 +60,12 @@ class Messenger extends Component {
 
   componentWillReceiveProps(newProps) {
     this.setState({ messages: newProps.messages });
+  }
+
+  componentDidUpdate() {
+    const element = document.getElementById('here');
+    console.log('updated');
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 
   newMessageSent(event) {
