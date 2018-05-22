@@ -11,11 +11,12 @@ function ShowNotification(props) {
 
 class User extends Component {
   render() {
+    const online = (this.props.status === 'Online' ? 'border-success mr-3 rounded border shadow-sm' : 'mr-3 rounded border shadow-sm');
     return (
       <li className={this.props.current ? 'current' : null}>
         <button onClick={() => this.props.navigateUsers(this.props.uid)} className="listbtn pl-5 py-3 media">
           <div className="image">
-            <img className="mr-3 rounded border shadow-sm" src={this.props.avatar} width="40px" height="40px" alt="" />
+            <img className={online} src={this.props.avatar} width="40px" height="40px" alt="" />
             <ShowNotification count={this.props.notification} />
           </div>
           <div className="media-body hide">

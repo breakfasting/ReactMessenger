@@ -1,4 +1,4 @@
-/* eslint-disable react/prefer-stateless-function, react/jsx-closing-tag-location, max-len, react/prop-types */
+/* eslint-disable react/prefer-stateless-function, react/jsx-closing-tag-location, max-len, react/prop-types, no-undef */
 
 import React, { Component } from 'react';
 import io from 'socket.io-client';
@@ -65,7 +65,10 @@ class App extends Component {
     this.setState({ users: USERS });
 
     this.socket.emit('GETMESSAGES');
-    this.switchPage(3);
+    this.switchPage((this.props.login === 0) ? 1 : 0);
+  }
+  componentDidMount() {
+    document.title = USERS[this.props.login].name;
   }
 
   switchPage(user) {

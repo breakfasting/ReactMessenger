@@ -41,7 +41,42 @@ const MESSAGES = [
     fromUID: 2,
     toUID: 0,
     text: 'Hey Wayne, Im Tony',
-    unread: true,
+  },
+  {
+    mid: 1,
+    fromUID: 3,
+    toUID: 2,
+    text: 'Big man in a suit of armor. Take that off, what are you?',
+  },
+  {
+    mid: 2,
+    fromUID: 2,
+    toUID: 3,
+    text: 'Genius, billionaire, playboy, philanthropist.',
+  },
+  {
+    mid: 3,
+    fromUID: 3,
+    toUID: 1,
+    text: 'Dr. Banner! Now might be a good time to get angry.',
+  },
+  {
+    mid: 4,
+    fromUID: 1,
+    toUID: 3,
+    text: 'That\'s my secret, Captain. I\'m always angry.',
+  },
+  {
+    mid: 5,
+    fromUID: 2,
+    toUID: 1,
+    text: 'It\'s good to meet you, Doctor Banner. Your work on anti-electron collisions is unparalleled - and I\'m a huge fan of the way you lose control and turn into an enormous green rage-monster.',
+  },
+  {
+    mid: 6,
+    fromUID: 1,
+    toUID: 2,
+    text: '...Thanks.',
   },
 ];
 

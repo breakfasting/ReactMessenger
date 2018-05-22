@@ -62,21 +62,23 @@ class Messenger extends Component {
   }
 
   newMessageSent(event) {
-    const messagelist = this.state.messages;
+    if (this.state.text.length !== 0) {
+      const messagelist = this.state.messages;
 
-    this.socket.emit('NEWMESSAGE', {
-      fromUID: this.props.login,
-      toUID: this.props.between,
-      text: this.state.text,
-    });
+      this.socket.emit('NEWMESSAGE', {
+        fromUID: this.props.login,
+        toUID: this.props.between,
+        text: this.state.text,
+      });
 
-    messagelist.push({
-      fromUID: this.props.login,
-      toUID: this.props.between,
-      text: this.state.text,
-    });
-    this.setState({ text: '' });
-    event.preventDefault();
+      messagelist.push({
+        fromUID: this.props.login,
+        toUID: this.props.between,
+        text: this.state.text,
+      });
+      this.setState({ text: '' });
+      event.preventDefault();
+    }
   }
 
   handleChange(event) {
