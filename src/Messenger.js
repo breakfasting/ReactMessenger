@@ -64,7 +64,6 @@ class Messenger extends Component {
 
   componentDidUpdate() {
     const element = document.getElementById('here');
-    console.log('updated');
     element.scrollIntoView({ behavior: 'smooth' });
   }
 
