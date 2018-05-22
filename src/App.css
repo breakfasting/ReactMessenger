@@ -1,0 +1,96 @@
+html, body {
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #ebebeb;    
+}
+
+.main {
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.side {
+    height: 100%;
+    width: 300px;
+    background-color: #333333;
+}
+
+h6 {
+    font-weight: bold;    
+}
+
+.status {
+    font-size: 0.875rem;
+    color: #CCCCCC;
+}
+
+.list > li:not(.current):hover {
+    background-color: #3d5a5a;    
+}
+
+.current {
+    background-color: #669999;
+}
+
+.btn {
+    background-color: #99CCCC;
+    color: white;
+}
+
+.bg-sent {
+    background-color: #99CCCC;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #669999;   
+}
+
+.messenges {
+    flex: 1;
+    /* background-color: aqua; */
+    overflow-y: auto;
+}
+
+.messenges div > div {
+    max-width: 75%;
+}
+
+.image {
+    position: relative;
+}
+
+.image span {
+    position: absolute;
+    top: -0.5rem;
+    right: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .messenges div > div {
+        max-width: 100%;
+    }    
+}
+
+@media screen and (max-width: 576px) {
+    .hide {
+        display: none;
+    }    
+
+    .side {
+        width: 70px;
+    }
+
+    .list li > a {
+        padding-left: 1rem!important;
+    }
+}
