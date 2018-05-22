@@ -1,6 +1,7 @@
 # ReactMessenger
 
 A Messenger App using ReactJS, Express, and Socket.io
+![Demo Screenshot](https://i.imgur.com/FlqWIny.png)
 
 ## Getting Started
 
