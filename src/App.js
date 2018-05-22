@@ -76,7 +76,7 @@ const MESSAGES1 = [
     mid: 6,
     fromUID: 1,
     toUID: 0,
-    text: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error soluta, vero ducimus magni corporis voluptate commodi iure et eum quae amet beatae porro minima reprehenderit tempore delectus ut? Voluptates est cumque et dolorem deleniti sequi blanditiis officia praesentium necessitatibus fugit velit saepe eius, rem vitae tempore molestias minima repudiandae tenetur.',
+    text: 'Bruce Banner Lorem ipsum dolor sit, amet consectetur adipisicing elit. Error soluta, vero ducimus magni corporis voluptate commodi iure et eum quae amet beatae porro minima reprehenderit tempore delectus ut? Voluptates est cumque et dolorem deleniti sequi blanditiis officia praesentium necessitatibus fugit velit saepe eius, rem vitae tempore molestias minima repudiandae tenetur.',
   },
 ];
 const MESSAGES3 = [
@@ -102,7 +102,7 @@ class App extends Component {
   }
 
   getMessages() {
-    this.setState({ messages: MESSAGES2 });
+    this.setState({ messages: MESSAGES1 });
     console.log('click');
   }
 
@@ -119,7 +119,7 @@ class App extends Component {
       <div className="app h-100 d-flex">
         <button onClick={this.getMessages}>123</button>
         <Side users={this.state.rows} />
-        <Messenger messages={this.state.messages} between={2} />
+        <Messenger messages={this.state.messages} between={1} />
       </div>
     );
   }
